@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'faker'
   gem 'pry-rails', '~> 0.3.3'
+  gem 'rails-i18n', '~> 5.1'
 end
 
 group :development do
