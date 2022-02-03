@@ -1,17 +1,20 @@
 class Contact < ApplicationRecord
-  belongs_to :kind, optional: true
+  belongs_to :kind
+  has_many :phones
 
-  def birthdate_br
-    I18n.l(self.birthdate) unless self.birthdate.blank?
-  end
 
-  def to_br
-    {
-      name: self.name,
-      email: self.email,
-      birthdate: (I18n.l(self.birthdate) unless self.birthdate.blank?)
-    }
-  end
+
+  # def birthdate_br
+  #   I18n.l(self.birthdate) unless self.birthdate.blank?
+  # end
+  #
+  # def to_br
+  #   {
+  #     name: self.name,
+  #     email: self.email,
+  #     birthdate: (I18n.l(self.birthdate) unless self.birthdate.blank?)
+  #   }
+  # end
   # def autor
   #   'Allyson bruno'
   # end
@@ -20,11 +23,11 @@ class Contact < ApplicationRecord
   #   self.kind.description
   # end
   #
-  # def as_json(options={})
-  #   super(
-  #     root: true,
-  #     methods: [:kind_description, :autor],
-  #     # include: { kind: { only: :description }}
-  #   )
-  # end
+
+  def as_json(options={})
+    h = super(options)
+    h[:birthdate] = (I18n.l(self.birthdate) unless self.birthdate.blank?)
+    h
+  end
+
 end

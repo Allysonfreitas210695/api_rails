@@ -1,6 +1,7 @@
 namespace :dev do
   desc "Configura o ambiente de configuracao"
   task setup: :environment do
+
     puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     puts "Cadastrando os Tipos contados"
     kinds = %w(Amigo Comercial Conhecido)
@@ -21,6 +22,14 @@ namespace :dev do
     puts "Contatos cadastrado com sucesso!"
     puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
-
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    puts "Telefone os contados"
+    Contact.all.each do |contact|
+      2.times do |i|
+        contact.phones.create!(number: Faker::PhoneNumber.cell_phone)
+      end
+    end
+    puts "Telefone cadastrado com sucesso!"
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
   end
 end
