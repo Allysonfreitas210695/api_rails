@@ -4,33 +4,37 @@ Rails.application.routes.draw do
   # resources :auths, only: [:create]
   resources :kinds
 
-  api_version(:module => "v1", :header => {:name => "Accept", :value => "application/vnd.api+json; version=1"}) do
-    resources :contacts do
-      resource :kind, only: [:show]
-      resource :kind, only: [:show], path: 'realationships/kind'
+  constraints subdomain: 'v1' do
+    scope module: 'v1' do
+      resources :contacts do
+        resource :kind, only: [:show]
+        resource :kind, only: [:show], path: 'realationships/kind'
 
-      resource :phones, only: [:show]
-      resource :phones, only: [:show], path: 'realationships/phones'
-      resource :phone, only: [:update, :create, :destroy]
-      resource :phone, only: [:show], path: 'realationships/phone'
+        resource :phones, only: [:show]
+        resource :phones, only: [:show], path: 'realationships/phones'
+        resource :phone, only: [:update, :create, :destroy]
+        resource :phone, only: [:show], path: 'realationships/phone'
 
-      resource :address, only: [:show, :update, :create, :destroy]
-      resource :address, only: [:show, :update, :create, :destroy], path: 'realationships/address'
+        resource :address, only: [:show, :update, :create, :destroy]
+        resource :address, only: [:show, :update, :create, :destroy], path: 'realationships/address'
+      end
     end
   end
 
-  api_version(:module => "v2", :header => {:name => "Accept", :value => "application/vnd.api+json; version=2"}) do
-    resources :contacts do
-      resource :kind, only: [:show]
-      resource :kind, only: [:show], path: 'realationships/kind'
+  constraints subdomain: 'v2' do
+    scope module: 'v2' do
+      resources :contacts do
+        resource :kind, only: [:show]
+        resource :kind, only: [:show], path: 'realationships/kind'
 
-      resource :phones, only: [:show]
-      resource :phones, only: [:show], path: 'realationships/phones'
-      resource :phone, only: [:update, :create, :destroy]
-      resource :phone, only: [:show], path: 'realationships/phone'
+        resource :phones, only: [:show]
+        resource :phones, only: [:show], path: 'realationships/phones'
+        resource :phone, only: [:update, :create, :destroy]
+        resource :phone, only: [:show], path: 'realationships/phone'
 
-      resource :address, only: [:show, :update, :create, :destroy]
-      resource :address, only: [:show, :update, :create, :destroy], path: 'realationships/address'
+        resource :address, only: [:show, :update, :create, :destroy]
+        resource :address, only: [:show, :update, :create, :destroy], path: 'realationships/address'
+      end
     end
   end
 
