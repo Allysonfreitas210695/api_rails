@@ -1,5 +1,6 @@
 module V1
   class ContactSerializer < ActiveModel::Serializer
+    include ErrorSerializer
     attributes :id, :name, :email, :birthdate #, :author
 
     has_many :phones do

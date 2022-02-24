@@ -1,4 +1,9 @@
 class Contact < ApplicationRecord
+
+  # validates
+  validates_presence_of :kind
+  validates_presence_of :address
+
   paginates_per 5
 
   belongs_to :kind
