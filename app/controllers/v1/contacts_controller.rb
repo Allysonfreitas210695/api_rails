@@ -1,7 +1,7 @@
 module V1
   class ContactsController < ApplicationController
-    include ErrorSerializer
     before_action :set_contact, only: [:show, :update, :destroy]
+    # include ErrorSerializer
 
     # GET /contacts
     def index
@@ -12,7 +12,7 @@ module V1
       if stale?(etag: @contacts)
         render json: @contacts
       end
-      
+
     end
 
     # GET /contacts/1

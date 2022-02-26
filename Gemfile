@@ -43,6 +43,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails', '~> 0.3.3'
   gem 'rails-i18n', '~> 5.1'
+  gem 'rspec-rails'
 end
 
 group :development do
