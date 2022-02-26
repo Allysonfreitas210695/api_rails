@@ -1,7 +1,7 @@
 module V1
   class ContactsController < ApplicationController
-    before_action :set_contact, only: [:show, :update, :destroy]
     # include ErrorSerializer
+    before_action :set_contact, only: [:show, :update, :destroy]
 
     # GET /contacts
     def index
@@ -17,7 +17,7 @@ module V1
 
     # GET /contacts/1
     def show
-      render json: @contact, include: [:kind, :phones, :address] #, meta: { author: 'Allyson Bruno'}
+      render json: @contact
     end
 
     # POST /contacts
